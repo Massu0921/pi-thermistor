@@ -9,7 +9,7 @@ class Thermistor():
         self.parser = argparse.ArgumentParser()
 
         self.parser.add_argument("-c", "--channel", action="store",
-                                 help="A/Dコンバータのチャンネル(0～7). Default: 0", default=0, type=int)
+                                 help="A/Dコンバータのチャンネル(0～7). Default: 0", default=0, type=int, choices=[0,1,2,3,4,5,6,7])
         self.parser.add_argument("-v", "--v-ref", action="store",
                                  help="A/Dコンバータの基準電圧の値. Default: 3.3", default=3.3, type=float)
         self.parser.add_argument("-r", "--v-division-resistance", action="store",
