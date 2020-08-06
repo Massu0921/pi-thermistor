@@ -10,9 +10,9 @@ class Thermistor():
 
         self.parser.add_argument("-c", "--channel", action="store",
                                  help="A/Dコンバータのチャンネル(0～7). Default: 0", default=0, type=int)
-        self.parser.add_argument("-vr", "--v-ref", action="store",
+        self.parser.add_argument("-v", "--v-ref", action="store",
                                  help="A/Dコンバータの基準電圧の値. Default: 3.3", default=3.3, type=float)
-        self.parser.add_argument("-vdr", "--v-division-resistance", action="store",
+        self.parser.add_argument("-r", "--v-division-resistance", action="store",
                                  help="サーミスタ側の分圧抵抗の値(kΩ). Default: 4.7", default=4.7, type=float)
 
     def measure(self):
@@ -26,6 +26,7 @@ class Thermistor():
 
         mcp = adc.MCP3208()
         vout = mcp.get(ch)
+
         try:
             r_ther = (vref * vdr) / vout - vdr  # サーミスタの抵抗値
             var_b = 3452.9 * math.pow(r_ther, -0.012329)  # 可変にしたB定数
