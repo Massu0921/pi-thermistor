@@ -12,7 +12,7 @@ class Thermistor():
                                  help="A/Dコンバータのチャンネル(0～7). Default: 0", default=0, type=int)
         self.parser.add_argument("-vr", "--v-ref", action="store",
                                  help="A/Dコンバータの基準電圧の値. Default: 3.3", default=3.3, type=float)
-        self.parser.add_argument("-vd", "--v-division-resistance", action="store",
+        self.parser.add_argument("-vdr", "--v-division-resistance", action="store",
                                  help="サーミスタ側の分圧抵抗の値(kΩ). Default: 4.7", default=4.7, type=float)
 
     def measure(self):
