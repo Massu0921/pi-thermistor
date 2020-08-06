@@ -26,12 +26,14 @@ class Thermistor():
 
         mcp = adc.MCP3208()
         vout = mcp.get(ch)
-        r_ther = (vref * vdr) / vout - vdr  # サーミスタの抵抗値
-        var_b = 3452.9 * math.pow(r_ther, -0.012329)  # 可変にしたB定数
-        temp = var_b / math.log(r_ther * math.exp(var_b / (25+273.15)) / 10) - 273.15
+        try:
+            r_ther = (vref * vdr) / vout - vdr  # サーミスタの抵抗値
+            var_b = 3452.9 * math.pow(r_ther, -0.012329)  # 可変にしたB定数
+            temp = var_b / math.log(r_ther * math.exp(var_b / (25+273.15)) / 10) - 273.15
 
-        print(f"ch{ch}: {temp} ℃")
-
+            print(f"ch{ch}: {temp} ℃")
+        except ZeroDivisionError:
+            print("'NaN'")
 
 if __name__ == "__main__":
     thermistor = Thermistor()
