@@ -1,4 +1,7 @@
 # pi-thermistor
+サーミスタによる温度測定プログラム  
+A/Dコンバータは12bit 8ch [MCP3208](https://akizukidenshi.com/catalog/g/gI-00238/)を使用．  
+
 ## Usage
 ```
 $ sudo python3 measure.py -h
