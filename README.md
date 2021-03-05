@@ -1,6 +1,11 @@
 # pi-thermistor
 サーミスタによる温度測定プログラム  
 A/Dコンバータは12bit 8ch [MCP3208](https://akizukidenshi.com/catalog/g/gI-00238/)を使用．  
+サーミスタはJT Thermistor [103JT](http://akizukidenshi.com/download/ds/semitec/jt_thermistor.pdf)を使用．  
+プログラム`measure.py`内のB定数は，上記の資料より各温度区間でのB定数を算出し，得られた点から求めた近似曲線で最適化したものを設定している．  
+また，次のパラメータはコマンドライン引数で変更可能である．  
+- A/Dコンバータの基準電圧：3.3v
+- 分圧回路の抵抗値：4.7kΩ  
 
 ## Usage
 ```
