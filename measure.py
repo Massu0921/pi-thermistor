@@ -28,12 +28,13 @@ class Thermistor():
 
         temps = []
 
+        # 指定されたチャンネル分ループ
         for i in range(len(chs)):
             ch = chs[i]
             vdr = vdrs[i]
 
             mcp = adc.MCP3208()
-            vout = mcp.get(ch)
+            vout = mcp.get(ch)  # A/Dコンバータへの入力電圧を取得
 
             try:
                 r_ther = (vref * vdr) / vout - vdr  # サーミスタの抵抗値
@@ -42,14 +43,16 @@ class Thermistor():
 
                 temps.append(temp)
 
+            # 取得失敗
             except ZeroDivisionError:
                 temps.append("NaN")
 
         self.__output(chs, temps, verbose)
 
+    # 出力
     def __output(self, chs, temps, verbose):
         for i in range(len(chs)):
-            if verbose:
+            if verbose: # 詳細出力
                 print(f"ch{chs[i]}: {temps[i]} ℃")
             else:
                 print(f"{temps[i]} ", end='')
